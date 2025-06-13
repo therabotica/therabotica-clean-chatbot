@@ -12,11 +12,11 @@ export default async function Page() {
   return (
     <>
       <Chat
-        key={id}
-        id={id}
-        initialMessages={[]}
-        initialModelId={modelIdFromCookie?.value || DEFAULT_CHAT_MODEL.id}
-      />
+  key={id}
+  id={id}
+  initialMessages={[]}
+  initialModelId={modelIdFromCookie?.value}
+/>
       <DataStreamHandler chatId={id} />
     </>
   )
