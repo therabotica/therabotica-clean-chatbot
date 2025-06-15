@@ -11,11 +11,7 @@ const modelIdFromCookie = await cookieStore.get('chat-model');
 
   return (
     <>
-     <Chat 
-  key={id}
-  id={id}
-  initialMessages={[]}
-/>
+     <Chat id={id} />
       <DataStreamHandler chatId={id} />
     </>
   )
