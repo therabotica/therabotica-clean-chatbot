@@ -1,13 +1,22 @@
-// app/(chat)/page.tsx
-
+import { notFound } from 'next/navigation';
 import { cookies } from 'next/headers';
 import { Chat } from '@/components/chat';
 import { DEFAULT_CHAT_MODEL } from '@/lib/ai/models';
-import { generateUUID } from '@/lib/utils';
 import { DataStreamHandler } from '@/components/data-stream-handler';
 
-export default async function Page() {
-  const id = generateUUID();
+type Props = {
+  params: {
+    id: string;
+  };
+};
+
+export default async function Page({ params }: Props) {
+  const { id } = params;
+
+  if (!id) {
+    notFound();
+  }
+
   const cookieStore = await cookies();
   const modelIdFromCookie = await cookieStore.get('chat-model');
 
