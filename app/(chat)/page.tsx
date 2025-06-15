@@ -1,17 +1,17 @@
-import { notFound } from 'next/navigation';
 import { cookies } from 'next/headers';
+import { notFound } from 'next/navigation';
 import { Chat } from '@/components/chat';
 import { DEFAULT_CHAT_MODEL } from '@/lib/ai/models';
 import { DataStreamHandler } from '@/components/data-stream-handler';
 
-type Props = {
+type Params = {
   params: {
     id: string;
   };
 };
 
-export default async function Page({ params }: Props) {
-  const { id } = params;
+export default async function Page({ params }: Params) {
+  const id = params.id;
 
   if (!id) {
     notFound();
